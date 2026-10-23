@@ -1,0 +1,39 @@
+appId: be.vnicolas.hansen-solvent-app
+productName: Hansen Solvent App
+copyright: Copyright (c) 2026 Vincent Nicolas
+
+directories:
+  output: release
+
+asar: true
+asarUnpack:
+  - node_modules/better-sqlite3/**/*
+
+files:
+  - dist/**/*
+  - package.json
+  - '!dist/**/*.map'
+
+extraResources:
+  - from: data
+    to: data
+    filter:
+      - '**/*'
+
+npmRebuild: true
+buildDependenciesFromSource: false
+
+win:
+  icon: build/icon.ico
+  target:
+    - target: dir
+      arch:
+        - x64
+    - target: portable
+      arch:
+        - x64
+  executableName: Hansen Solvent App
+
+portable:
+  artifactName: 'Hansen-Solvent-App-${version}-${arch}.${ext}'
+
